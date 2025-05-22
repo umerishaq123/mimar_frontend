@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mimar/utils/constant.dart';
 import 'package:mimar/utils/snackbar.dart';
+import 'package:mimar/view/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -147,7 +148,9 @@ Future<bool> signup(String name, String email, String password,BuildContext cont
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       final data = jsonDecode(response.body);
-
+ Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) =>  LoginScreen()),
+        );
       SnackbarUtils.showCustomSnackbar(context: context, title: "success", message: "user created successful");
 
 

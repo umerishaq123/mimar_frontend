@@ -75,21 +75,24 @@ class UsersTableWidget extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: DataTable(
                     columns: const [
-                      DataColumn(label: Text('ID')),
+                      DataColumn(label: Text('s.no')),
                       DataColumn(label: Text('Name')),
                       DataColumn(label: Text('Email')),
                       DataColumn(label: Text('Created At')),
                     ],
-                    rows: users.map((user) {
-                      return DataRow(
-                        cells: [
-                          DataCell(Text(user.id)),
-                          DataCell(Text(user.name)),
-                          DataCell(Text(user.email)),
-                          DataCell(  Text(formatDate(user.createdAt.toString() ?? ''))),
-                        ],
-                      );
-                    }).toList(),
+                rows: users.asMap().entries.map((entry) {
+  int index = entry.key;
+  UserModel user = entry.value;
+  return DataRow(
+    cells: [
+      DataCell(Text((index + 1).toString())), // S.No
+      DataCell(Text(user.name)),
+      DataCell(Text(user.email)),
+      DataCell(Text(formatDate(user.createdAt.toString()))),
+    ],
+  );
+}).toList(),
+
                   ),
                 ),
               ),

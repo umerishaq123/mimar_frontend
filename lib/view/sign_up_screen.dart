@@ -49,12 +49,12 @@ class _SignupScreenState extends State<SignupScreen> {
          context,
       );
 
-      // If signup is successful, navigate to home screen
-      if (success && mounted) {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) =>  LoginScreen()),
-        );
-      }
+      // // If signup is successful, navigate to home screen
+      // if (success ) {
+      //   Navigator.of(context).push(
+      //     MaterialPageRoute(builder: (context) =>  LoginScreen()),
+      //   );
+      // }
     }
   }
 
